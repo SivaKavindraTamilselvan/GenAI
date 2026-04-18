@@ -6,7 +6,7 @@ def document_study_purpose():
     This is the structure of the Document that is used for the chunking purpose
     """
 
-    doc = Document(
+    Document(
         page_content="this is main text content used to create the RAG",
         metadata={
             "source" : "example.txt",
@@ -91,7 +91,7 @@ def document_study_purpose():
     print("Sample text files are created")
 
 
-from langchain_community.document_loaders import TextLoader, DirectoryLoader
+from langchain_community.document_loaders import TextLoader, DirectoryLoader, PyMuPDFLoader
 
 
 def document_loader_function():
@@ -103,7 +103,7 @@ def document_loader_function():
     print("Document loader function")
     print("Path = neural_network.txt file")
     loader = TextLoader("data/text_files/neural_network.txt")
-    document = loader.load()
+    loader.load()
     print("Document loaded")
 
     """
@@ -113,7 +113,7 @@ def document_loader_function():
     print("-" * 50)
     print("Directory Loader")
     print("Path = text_file folder")
-    directory_loader = DirectoryLoader(
+    DirectoryLoader(
         "data/text_files",
         glob="*.txt",
         loader_cls=TextLoader,
@@ -121,10 +121,27 @@ def document_loader_function():
     )
     print("Directory loaded")
 
+def pdf_loader_function():
+    """
+    it is used to load the pdf files
+    """
+
+    print("-" * 50)
+    print("Pdf loader function")
+    print("Path = pdf_file folder")
+    DirectoryLoader(
+        "data/pdf_files",
+        glob="*.pdf",
+        loader_cls=PyMuPDFLoader,
+        show_progress=True
+    )
+
+    print("Pdf loaded")
 
 def main():
     document_study_purpose()
     document_loader_function()
+    pdf_loader_function()
 
 if __name__ == "__main__":
     main()
