@@ -1,0 +1,1 @@
+This directory is for generative AI project development
