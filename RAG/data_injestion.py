@@ -16,7 +16,7 @@ def document_study_purpose():
         }
     )
 
-    print("Document Structire " , doc)
+    print("Document Structure created")
 
     import os
     os.makedirs("data/text_files",exist_ok=True)
@@ -91,9 +91,40 @@ def document_study_purpose():
     print("Sample text files are created")
 
 
+from langchain_community.document_loaders import TextLoader, DirectoryLoader
+
+
+def document_loader_function():
+    """
+    it could load only one single file
+    """
+
+    print("-" * 50)
+    print("Document loader function")
+    print("Path = neural_network.txt file")
+    loader = TextLoader("data/text_files/neural_network.txt")
+    document = loader.load()
+    print("Document loaded")
+
+    """
+    for loading the directory including all the text files in that folder
+    """
+
+    print("-" * 50)
+    print("Directory Loader")
+    print("Path = text_file folder")
+    directory_loader = DirectoryLoader(
+        "data/text_files",
+        glob="*.txt",
+        loader_cls=TextLoader,
+        show_progress=True
+    )
+    print("Directory loaded")
+
+
 def main():
     document_study_purpose()
-
+    document_loader_function()
 
 if __name__ == "__main__":
     main()
