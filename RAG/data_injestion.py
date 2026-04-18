@@ -92,6 +92,7 @@ def document_study_purpose():
 
 
 from langchain_community.document_loaders import TextLoader, DirectoryLoader, PyMuPDFLoader
+from pathlib import Path
 
 
 def document_loader_function():
@@ -122,26 +123,52 @@ def document_loader_function():
     print("Directory loaded")
 
 def pdf_loader_function():
-    """
-    it is used to load the pdf files
-    """
-
     print("-" * 50)
-    print("Pdf loader function")
+    print("Directory Loader")
     print("Path = pdf_file folder")
     DirectoryLoader(
         "data/pdf_files",
-        glob="*.pdf",
+        glob="*.txt",
         loader_cls=PyMuPDFLoader,
         show_progress=True
     )
+    print("Directory loaded")
 
-    print("Pdf loaded")
+def all_pdf_loader_function():
+
+    print("-" * 50)
+    print("All needed pdf loaded")
+    print("Path = pdf_file folder")
+
+    all_documents = []
+    pdf_dir = "data/pdf_files"
+    pdf_files = list(Path(pdf_dir).glob("*.pdf"))
+
+    print("Number of pdf_files = {}".format(len(pdf_files)))
+
+    for pdf_file in pdf_files:
+        print("Processing ",pdf_file)
+        try:
+            loader = PyMuPDFLoader(str(pdf_file))
+            documents = loader.load()
+
+            for doc in documents:
+                doc.metadata['source_file'] = pdf_file.name
+                doc.metadata['file_type'] = 'pdf'
+
+            all_documents.extend(documents)
+            print("Loaded all the pdf files")
+        except Exception as e:
+            print(e)
+            raise
+
+    print("Number of documents = {}".format(len(all_documents)))
 
 def main():
     document_study_purpose()
     document_loader_function()
     pdf_loader_function()
+    all_pdf_loader_function()
 
 if __name__ == "__main__":
     main()
