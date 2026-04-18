@@ -14,6 +14,10 @@ doc = Document(
     }
 )
 
+import os
+os.makedirs("data/text_files",exist_ok=True)
+
+
 
 
 
