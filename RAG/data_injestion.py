@@ -164,6 +164,8 @@ def all_pdf_loader_function():
 
     print("Number of documents = {}".format(len(all_documents)))
 
+
+
 def main():
     document_study_purpose()
     document_loader_function()
