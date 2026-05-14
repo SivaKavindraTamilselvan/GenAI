@@ -1,0 +1,39 @@
+GEN AI - Generating new content
+    
+    Initially simple table is easy to handle and we have structured data so easy.
+    If need to find the given image is cat or dog here data are complicated one so comes deep learning  and neural network
+    
+    
+    Statisctical Method -> neural netwrok -> recural nural network -> generating remaing words. (Langiage Model)->Transformers
+    
+    Example Anjela,Thanks for 
+    Contacring me
+    Reaching out
+    Finoshing project
+    Each have differnet probabilty to generate the next words.
+    
+    We give the datasets or sample to neural network here it does self supervised learning.
+    Neural netwrok will predict the next words
+    So many layers in neural network is LLM
+    Parameters means weights.
+    
+    Transformer
+    Google - BERT (text model)
+    Similarly there will be for image models.
+    Text - Text Model
+    BERT
+    GPT
+    Text to image
+    DALL - E
+    Stable Diffusion
+    Text to Video
+    OpenAI Sora
+    
+    Statistical Probabilty and randomness
+    
+    GPT - Chatgpt
+    PaLM 2 - Google
+    LLaMA- Meta
+    
+    Open Ai used RLHF to make less toxic
+    LLM works on database alone that is given.
